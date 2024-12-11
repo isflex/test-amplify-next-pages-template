@@ -1,33 +1,52 @@
 {
-  "name": "amplify-next-pages-template",
-  "version": "0.1.0",
+  "name": "@flexiness/gateway",
+  "version": "1.0.0",
   "private": true,
+  "description": "La Source | APE | Gateway",
+  "repository": "git@github.com:isflex/la-source-ape-nextjs",
+  "license": "MIT",
+  "author": "ischerer <hello@flexiness.com>",
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "compile": "turbo run compile:clean:sh",
+    "compile:clean:sh": "./bin/run-compile.sh clean",
+    "compile:sh": "./bin/run-compile.sh",
+    "compile:tsc:project:references": "pnpm tsc -b ./tsconfig.build.json",
+    "compile:tsc:project:references:watch": "pnpm tsc -b ./tsconfig.build.json --watch --preserveWatchOutput",
+    "compile:watch": "turbo run compile:watch:sh",
+    "compile:watch:sh": "./bin/run-compile-watch.sh",
+    "dev": "dotenvx run -f $FLEX_PROJ_ROOT/env/public/.env.$FLEX_MODE -- cross-env BUILD_RUNNING=false pnpm dev:client",
+    "dev:client": "turbo run turbo:dev:client:webpack",
+    "dev:gateway": "turbo run turbo:dev:gateway --verbosity=1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "dependencies": {
-    "@aws-amplify/ui-react": "^6.5.5",
-    "aws-amplify": "^6.6.6",
-    "next": "14.2.10",
-    "react": "^18",
-    "react-dom": "^18"
+    "@dotenvx/dotenvx": "1.5.0"
   },
   "devDependencies": {
-    "@aws-amplify/backend": "^1.5.1",
-    "@aws-amplify/backend-cli": "^1.3.0",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "aws-cdk": "^2.137.0",
-    "aws-cdk-lib": "^2.137.0",
-    "constructs": "^10.3.0",
-    "esbuild": "^0.20.2",
-    "eslint": "^8",
-    "eslint-config-next": "14.1.4",
-    "tsx": "^4.7.2",
-    "typescript": "^5.4.5"
+  },
+  "peerDependencies": {
+  },
+  "pnpm": {
+    "overrides": {
+      "flexiness": "workspace:./packages/flex/types",
+      "@flexiness/tsconfig": "workspace:./packages/flex/config/tsconfig",
+      "gateway": "workspace:./apps/la-source/ape/gateway",
+      "@flexiness/domain-utils": "workspace:./packages/flex/domain-utils",
+      "@flexiness/domain-store": "workspace:./packages/flex/domain-store",
+      "@flexiness/certs": "workspace:./packages/flex/config/certs",
+      "@dotenvx/dotenvx": "1.5.0"
+    }
   }
 }
