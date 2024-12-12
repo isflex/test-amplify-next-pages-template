@@ -52,9 +52,9 @@ then
     rm ./packages/flex/design-system-react-ts/*.tsbuildinfo
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    # pnpm clean:all:tsc
+    # yarn clean:all:tsc
 fi
 
-# retry_until 5s 5 pnpm compile:tsc
+# retry_until 5s 5 yarn compile:tsc
 
-pnpm compile:tsc:project:references:watch
+yarn compile:tsc:project:references:watch

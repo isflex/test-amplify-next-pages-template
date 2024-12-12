@@ -13,13 +13,13 @@
   "scripts": {
     "build": "node buildData.js",
     "flex-bake": "echo $(pwd)",
-    "pre:start": "echo \"$FLEX_SERVER_LAUNCHING $FLEX_CONTENT_HOST\" && pnpm start",
-    "serve": "dotenvx run -f $FLEX_PROJ_ROOT/env/public/.env.$FLEX_MODE -- pnpm serve:express",
+    "pre:start": "echo \"$FLEX_SERVER_LAUNCHING $FLEX_CONTENT_HOST\" && yarn start",
+    "serve": "dotenvx run -f $FLEX_PROJ_ROOT/env/public/.env.$FLEX_MODE -- yarn serve:express",
     "serve:dev": "serve content -p $FLEX_CONTENT_PORT --cors 2>&1",
-    "serve:dockerized": "echo \"$FLEX_SERVER_LAUNCHING $FLEX_CONTENT_HOST\n\" && pnpm serve:dev",
-    "serve:express": "echo \"$FLEX_SERVER_LAUNCHING $FLEX_CONTENT_HOST\n\" && pnpm node server.cjs",
+    "serve:dockerized": "echo \"$FLEX_SERVER_LAUNCHING $FLEX_CONTENT_HOST\n\" && yarn serve:dev",
+    "serve:express": "echo \"$FLEX_SERVER_LAUNCHING $FLEX_CONTENT_HOST\n\" && yarn node server.cjs",
     "serve:prod": "echo \"$FLEX_SERVER_LAUNCHING $FLEX_CONTENT_HOST\n\" && serve content -l tcp://$FLEX_CONTENT_HOSTNAME:$FLEX_CONTENT_PORT --cors 2>&1",
-    "start": "dotenvx run -f $FLEX_PROJ_ROOT/env/public/.env.$FLEX_MODE -- pnpm serve:express",
+    "start": "dotenvx run -f $FLEX_PROJ_ROOT/env/public/.env.$FLEX_MODE -- yarn serve:express",
     "substitute-nx-project": "dotenvx run -f $FLEX_PROJ_ROOT/env/public/.env.$FLEX_MODE -- envsub --env FLEX_CONTENT_HOST --env FLEX_SERVER_RUNNING --syntax dollar-both ./project_template.json ./project.json"
   },
   "dependencies": {

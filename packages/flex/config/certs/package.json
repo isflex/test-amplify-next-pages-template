@@ -12,10 +12,10 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "scripts": {
-    "clean": "pnpm exec rimraf dist",
+    "clean": "yarn exec rimraf dist",
     "compile:cjs": "tsc -p tsconfig.cjs.json",
     "compile:esm": "tsc -p tsconfig.esm.json",
-    "compile:tsc": "pnpm clean && pnpm compile:esm && pnpm compile:cjs",
+    "compile:tsc": "yarn clean && yarn compile:esm && yarn compile:cjs",
     "compile:tsup": "tsup",
     "publish:fix": "./fixup.sh",
     "test": "echo \"Error: no test specified\" && exit 1"

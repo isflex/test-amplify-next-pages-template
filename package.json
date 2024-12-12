@@ -11,12 +11,11 @@
     "compile": "turbo run compile:clean:sh",
     "compile:clean:sh": "./bin/run-compile.sh clean",
     "compile:sh": "./bin/run-compile.sh",
-    "compile:tsc:project:references": "pnpm tsc -b ./tsconfig.build.json",
-    "compile:tsc:project:references:watch": "pnpm tsc -b ./tsconfig.build.json --watch --preserveWatchOutput",
+    "compile:tsc:project:references": "yarn tsc -b ./tsconfig.build.json",
+    "compile:tsc:project:references:watch": "yarn tsc -b ./tsconfig.build.json --watch --preserveWatchOutput",
     "compile:watch": "turbo run compile:watch:sh",
     "compile:watch:sh": "./bin/run-compile-watch.sh",
-    "dev": "dotenvx run -f $FLEX_PROJ_ROOT/env/public/.env.$FLEX_MODE -- cross-env BUILD_RUNNING=false pnpm dev:client",
-    "dev:client": "turbo run turbo:dev:client:webpack",
+    "dev": "dotenvx run -f $FLEX_PROJ_ROOT/env/public/.env.$FLEX_MODE -- cross-env BUILD_RUNNING=false yarn dev:gateway",
     "dev:gateway": "turbo run turbo:dev:gateway --verbosity=1"
   },
   "browserslist": {
@@ -35,18 +34,32 @@
     "@dotenvx/dotenvx": "1.5.0"
   },
   "devDependencies": {
+    "tslib": "^2.4.0",
+    "tsx": "^4.7.3",
+    "turbo": "2.0.6",
+    "typescript": "5.7.2",
+    "zod": "3.24.1"
   },
-  "peerDependencies": {
+  "resolutions": {
+    "flexiness": "workspace:./packages/flex/types",
+    "@flexiness/tsconfig": "workspace:./packages/flex/config/tsconfig",
+    "gateway": "workspace:./apps/gateway",
+    "@flexiness/domain-utils": "workspace:./packages/flex/domain-utils",
+    "@flexiness/domain-store": "workspace:./packages/flex/domain-store",
+    "@flexiness/certs": "workspace:./packages/flex/config/certs",
+    "@dotenvx/dotenvx": "1.5.0",
+    "esbuild": "0.24.0",
+    "@aws-amplify/data-schema": "1.17.1",
+    "@aws-amplify/data-schema-types": "1.2.0",
+    "@aws-sdk/client-sts": "3.699.0",
+    "@aws-sdk/client-sso-oidc": "3.699.0",
+    "typescript": "5.7.2",
+    "zod": "3.24.1",
+    "next": "15.0.4"
   },
-  "pnpm": {
-    "overrides": {
-      "flexiness": "workspace:./packages/flex/types",
-      "@flexiness/tsconfig": "workspace:./packages/flex/config/tsconfig",
-      "gateway": "workspace:./apps/la-source/ape/gateway",
-      "@flexiness/domain-utils": "workspace:./packages/flex/domain-utils",
-      "@flexiness/domain-store": "workspace:./packages/flex/domain-store",
-      "@flexiness/certs": "workspace:./packages/flex/config/certs",
-      "@dotenvx/dotenvx": "1.5.0"
-    }
-  }
+  "workspaces": [
+    "apps/**/*",
+    "packages/**/*"
+  ],
+  "packageManager": "yarn@4.5.3"
 }

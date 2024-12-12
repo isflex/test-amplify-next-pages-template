@@ -52,7 +52,7 @@ retry_until() {
 #     # rm ./packages/flex/design-system-react-ts/*.tsbuildinfo
 #     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-#     # pnpm clean:all:tsc
+#     # yarn clean:all:tsc
 # fi
 
-retry_until 5s 5 pnpm compile:tsc:project:references
+retry_until 5s 5 yarn compile:tsc:project:references

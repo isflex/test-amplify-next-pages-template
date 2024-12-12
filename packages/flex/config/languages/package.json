@@ -19,10 +19,10 @@
     "src"
   ],
   "scripts": {
-    "build:lib": "pnpm clean:compile && pnpm cpio:locales && pnpm cpio:locales:nextjs",
-    "clean:compile": "pnpm exec rimraf dist/locales",
-    "clean:compile:buildinfo": "pnpm exec rimraf '{*.tsbuildinfo}'",
-    "clean:lib": "pnpm clean:compile",
+    "build:lib": "yarn clean:compile && yarn cpio:locales && yarn cpio:locales:nextjs",
+    "clean:compile": "yarn exec rimraf dist/locales",
+    "clean:compile:buildinfo": "yarn exec rimraf '{*.tsbuildinfo}'",
+    "clean:lib": "yarn clean:compile",
     "cp:locales": "cp -r ./src/locales/**/*.{json, yml} ./dist/locales/",
     "cpio:locales": "cd ./src/locales && find ./ -type f -iname \"*.json\" -o -iname \"*.yml\" | cpio -updm ../../dist/locales",
     "cpio:locales:nextjs": "cd ./src/locales && find ./ -type f -iname \"*.json\" -o -iname \"*.yml\" | cpio -updm $FLEX_PROJ_ROOT/packages/gateway/public/locales",
@@ -30,12 +30,12 @@
     "tsc": "dotenvx run -f $FLEX_PROJ_ROOT/env/public/.env.$FLEX_MODE -- tsc -p tsconfig.json"
   },
   "dependencies": {
+    "@dotenvx/dotenvx": "1.5.0",
     "@flexiness/certs": "workspace:*",
     "@flexiness/domain-utils": "workspace:*",
     "accepts": "1.3.8",
     "cross-env": "7.0.3",
     "detect-port": "1.5.1",
-    "@dotenvx/dotenvx": "1.5.0",
     "dotenv-cli": "7.4.2",
     "express": "5.0.1",
     "i18next": "^22.4.14",

@@ -3,5 +3,5 @@
 # cd $FLEX_APP/bin;
 
 source ~/.profile;
-pnpm kill:all:ports;
-pnpm start;
+yarn kill:all:ports;
+yarn start;
