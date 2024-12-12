@@ -7,19 +7,13 @@ applications:
           commands: 
             - 'nvm install 20.15.0'
             - 'nvm use 20.15.0'
-            - 'corepack enable'
-            - 'yarn init -2'
-        build:
-          commands: 
             - 'yarn install --inline-builds --immutable'
-            - 'yarn rebuild'
-            - 'yarn amplify pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID'
+        build:
+          commands:
+            - 'yarn workspace @flexiness/gateway amplify info'
+            - 'yarn workspace @flexiness/gateway amplify pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID'
     frontend:
       phases:
-        preBuild:
-          commands: 
-            - 'yarn install --inline-builds --immutable'
-            - 'yarn rebuild'
         build:
           commands: 
             - 'yarn turbo run build --filter=gateway'
