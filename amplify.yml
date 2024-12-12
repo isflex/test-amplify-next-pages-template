@@ -10,8 +10,11 @@ applications:
             - 'yarn install --inline-builds --immutable'
         build:
           commands:
-            - 'yarn workspace @flexiness/gateway amplify info'
-            - 'yarn workspace @flexiness/gateway amplify pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID'
+            - 'pwd'
+            - 'yarn workspace gateway amplify info'
+            - 'yarn workspace gateway amplify pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID --outputs-out-dir apps/gateway'
+            # - 'yarn workspace @flexiness/gateway amplify info'
+            # - 'yarn workspace @flexiness/gateway amplify pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID'
     frontend:
       phases:
         build:
